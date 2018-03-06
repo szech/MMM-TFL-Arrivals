@@ -16,7 +16,8 @@ Module.register("MMM-TFL-Arrivals", {
 		limit: 5,
 		initialLoadDelay: 0, // start delay in milliseconds.
 		color: true,
-		debug: false
+		debug: false,
+		header: ''
 	},
 	start: function() {
 		Log.log("Starting module: " + this.name);
@@ -79,7 +80,7 @@ Module.register("MMM-TFL-Arrivals", {
 			return wrapper;
 		}
 
-		if (this.buses.data !== null) {
+		if (this.config.header == '') {
 			this.config.header = this.buses.data[0].stopName;
 		}
 
@@ -126,7 +127,14 @@ Module.register("MMM-TFL-Arrivals", {
 				//Direction Info
 				var directionCell = document.createElement("td");
 				directionCell.className = "dest";
+				
+				bus.direction = bus.direction.replace("Underground Station", "");
+				bus.direction = bus.direction.replace("Rail Station", "");
+				
 				directionCell.innerHTML = bus.direction;
+				
+				
+				
 				row.appendChild(directionCell);
 
 				//Time Tabled Departure
@@ -169,7 +177,7 @@ Module.register("MMM-TFL-Arrivals", {
 
 			var messageCell = document.createElement("td");
 			messageCell.innerHTML = " " + this.buses.message + " ";
-			messageCell.className = "bright";
+			messageCell.className = "dimmed light small";
 			row1.appendChild(messageCell);
 
 			var row2 = document.createElement("tr");
@@ -177,7 +185,7 @@ Module.register("MMM-TFL-Arrivals", {
 
 			var timeCell = document.createElement("td");
 			timeCell.innerHTML = " " + this.buses.timestamp + " ";
-			timeCell.className = "bright";
+			timeCell.className = "dimmed light small";
 			row2.appendChild(timeCell);
 		}
 
