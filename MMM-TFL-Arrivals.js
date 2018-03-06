@@ -111,25 +111,36 @@ Module.register("MMM-TFL-Arrivals", {
 				bustable.appendChild(row);
 
 				//Route name/Number
-				var routeCell = document.createElement("td");
+                var modeCell = document.createElement("td");
+                modeCell.className = "mode";
+                var routeCell = document.createElement("td");
 				routeCell.className = "route";
+				
 				switch (bus.modeName) {
 					case "bus":
-					routeCell.className += " bus";
+				    modeCell.className += " bus";
 					break;
 					case "tube":
-					routeCell.className += " tube";
+				    modeCell.className += " tube";
 					break;
+                    case "overground":
+                    modeCell.className += " tube";
+	                break;
 				}
-				routeCell.innerHTML = " " + bus.routeName + " ";
+				
+				bus.routeName = bus.routeName.replace("London Overground", "Overground");
+				routeCell.innerHTML = "&nbsp;&nbsp; " + bus.routeName + " ";
+				row.appendChild(modeCell);
 				row.appendChild(routeCell);
 
 				//Direction Info
 				var directionCell = document.createElement("td");
 				directionCell.className = "dest";
 				
-				bus.direction = bus.direction.replace("Underground Station", "");
-				bus.direction = bus.direction.replace("Rail Station", "");
+				bus.direction = bus.direction.replace(" Underground Station", "");
+				bus.direction = bus.direction.replace(" Rail Station", "");
+				bus.direction = bus.direction.replace(" Station", "");
+                bus.direction = bus.direction.replace(" (London)", "");
 				
 				directionCell.innerHTML = bus.direction;
 				
