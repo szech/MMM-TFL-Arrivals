@@ -15,15 +15,15 @@
   white-space: nowrap;
 }
 
-.mode {
+.mode::before {
   font-size: 125%;
   font-family: 'FontAwesome';
 }
-.bus {
+.bus::before {
   content: '\f207';
 }
 
-.tube {
+.tube::before {
   content: '\f239';
 }
 
