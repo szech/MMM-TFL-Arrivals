@@ -58,3 +58,7 @@ typings/
 .env
 
 .AppleDouble/
+
+# Eclipse
+.settings/*
+.project
