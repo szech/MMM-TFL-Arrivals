@@ -18,6 +18,7 @@
 .mode::before {
   font-size: 100%;
   font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
 .bus::before {
   content: '\f207';
