@@ -16,8 +16,8 @@
 }
 
 .mode::before {
-  font-size: 125%;
-  font-family: 'FontAwesome';
+  font-size: 100%;
+  font-family: 'Font Awesome 5 Free';
 }
 .bus::before {
   content: '\f207';
